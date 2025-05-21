@@ -1,0 +1,8 @@
+# Ignore build output and Visual Studio temp files in language stats
+**/bin/** linguist-vendored
+**/obj/** linguist-vendored
+.vs/** linguist-vendored
+
+# Ignore Android-specific files (optional for MAUI projects)
+**/platforms/android/** linguist-vendored
+**/*.aidl linguist-vendored
