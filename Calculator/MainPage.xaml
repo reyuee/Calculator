@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.MainPage"
+             BackgroundColor="Black">
+
+    <VerticalStackLayout Padding="20">
+        
+        <Entry x:Name="DisplayEntry"
+               FontSize="48"
+               TextColor="White"
+               HorizontalTextAlignment="End"
+               Placeholder="0"
+               IsReadOnly="True"
+               Margin="0,40,0,20"
+               BackgroundColor="Transparent"/>
+
+        <Grid ColumnSpacing="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Rad 0 -->
+            <Button Grid.Row="0" Grid.Column="0" Text="7" Clicked="NumberClicked" />
+            <Button Grid.Row="0" Grid.Column="1" Text="8" Clicked="NumberClicked" />
+            <Button Grid.Row="0" Grid.Column="2" Text="9" Clicked="NumberClicked" />
+            <Button Grid.Row="0" Grid.Column="3" Text="⌫" Clicked="BackspaceClicked" />
+
+            <!-- Rad 1 -->
+            <Button Grid.Row="1" Grid.Column="0" Text="4" Clicked="NumberClicked" />
+            <Button Grid.Row="1" Grid.Column="1" Text="5" Clicked="NumberClicked" />
+            <Button Grid.Row="1" Grid.Column="2" Text="6" Clicked="NumberClicked" />
+            <Button Grid.Row="1" Grid.Column="3" Text="+" Clicked="OperatorClicked" />
+
+            <!-- Rad 2 -->
+            <Button Grid.Row="2" Grid.Column="0" Text="1" Clicked="NumberClicked" />
+            <Button Grid.Row="2" Grid.Column="1" Text="2" Clicked="NumberClicked" />
+            <Button Grid.Row="2" Grid.Column="2" Text="3" Clicked="NumberClicked" />
+            <Button Grid.Row="2" Grid.Column="3" Text="-" Clicked="OperatorClicked" />
+
+            <!-- Rad 3 -->
+            <Button Grid.Row="3" Grid.Column="0" Text="0" Clicked="NumberClicked" />
+            <Button Grid.Row="3" Grid.Column="1" Text="," Clicked="NumberClicked" />
+            <Button Grid.Row="3" Grid.Column="2" Text="C" Clicked="ClearClicked" />
+            <Button Grid.Row="3" Grid.Column="3" Text="*" Clicked="OperatorClicked" />
+
+            <!-- Rad 4 -->
+            <Button Grid.Row="4" Grid.Column="0" Text="=" Grid.ColumnSpan="3"
+                    Clicked="EqualClicked" BackgroundColor="#007ACC" TextColor="White" FontAttributes="Bold"/>
+            <Button Grid.Row="4" Grid.Column="3" Text="/" Clicked="OperatorClicked" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
