@@ -7,7 +7,7 @@
     Title="Calculator">
 
     <ShellContent
-        Title="Home"
+        Title="Rey Calculator"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

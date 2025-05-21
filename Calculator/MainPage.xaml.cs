@@ -1,23 +1,21 @@
-﻿using System;
+﻿using Microsoft.Maui.Controls;
+using System;
 using System.Globalization;
-using Microsoft.Maui.Controls;
 
 namespace Calculator
 {
     public partial class MainPage : ContentPage
     {
         private double currentValue = 0;
-
         private string currentOperator = "";
-
         private bool isNewNumber = true;
-
         private string expression = "";
 
         public MainPage()
         {
             InitializeComponent();
-            DisplayEntry.Text = "0"; 
+            DisplayLabel.Text = "0";
+            ExpressionLabel.Text = "";
         }
 
         private void NumberClicked(object sender, EventArgs e)
@@ -25,32 +23,31 @@ namespace Calculator
             var button = (Button)sender;
             string input = button.Text;
 
-            if (input == "," && DisplayEntry.Text.Contains(","))
+            if (input == "," && DisplayLabel.Text.Contains(","))
                 return;
 
-            if (isNewNumber || DisplayEntry.Text == "0")
+            if (isNewNumber || DisplayLabel.Text == "0")
             {
-                DisplayEntry.Text = input;
+                DisplayLabel.Text = input;
                 isNewNumber = false;
             }
             else
             {
-                DisplayEntry.Text += input;
+                DisplayLabel.Text += input;
             }
 
             expression += input;
+            ExpressionLabel.Text = expression;
         }
 
-        
         private void OperatorClicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
             string op = button.Text;
 
-            if (!double.TryParse(DisplayEntry.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double num))
+            if (!double.TryParse(DisplayLabel.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double num))
                 return;
 
-            
             if (currentOperator != "")
                 Calculate(num);
             else
@@ -58,30 +55,24 @@ namespace Calculator
 
             currentOperator = op;
             isNewNumber = true;
-
-            expression += op;
-
-            DisplayEntry.Text = expression;
+            expression += $" {op} ";
+            ExpressionLabel.Text = expression;
         }
 
         private void EqualClicked(object sender, EventArgs e)
         {
-            if (!double.TryParse(DisplayEntry.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double num))
+            if (!double.TryParse(DisplayLabel.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double num))
                 return;
 
             Calculate(num);
 
-            
-            DisplayEntry.Text = currentValue.ToString("0.###", CultureInfo.CurrentCulture);
-
-            
+            DisplayLabel.Text = currentValue.ToString("N0", CultureInfo.CurrentCulture);
+            ExpressionLabel.Text = expression + " =";
             expression = currentValue.ToString(CultureInfo.CurrentCulture);
-
             currentOperator = "";
             isNewNumber = true;
         }
 
-     
         private void Calculate(double number)
         {
             switch (currentOperator)
@@ -92,13 +83,13 @@ namespace Calculator
                 case "-":
                     currentValue -= number;
                     break;
-                case "*":
+                case "×":
                     currentValue *= number;
                     break;
-                case "/":
+                case "÷":
                     if (number == 0)
                     {
-                        DisplayEntry.Text = "Fel: division med 0";
+                        DisplayLabel.Text = "Fel: division med 0";
                         currentValue = 0;
                         expression = "";
                         isNewNumber = true;
@@ -107,34 +98,47 @@ namespace Calculator
                     }
                     currentValue /= number;
                     break;
-                default:
-                    break;
             }
         }
 
-      
         private void ClearClicked(object sender, EventArgs e)
         {
             currentValue = 0;
             currentOperator = "";
             expression = "";
-            DisplayEntry.Text = "0";
+            DisplayLabel.Text = "0";
+            ExpressionLabel.Text = "";
             isNewNumber = true;
         }
 
-        
         private void BackspaceClicked(object sender, EventArgs e)
         {
-            if (DisplayEntry.Text.Length > 1)
+            if (DisplayLabel.Text.Length > 1)
             {
-                DisplayEntry.Text = DisplayEntry.Text[..^1];
-                expression = expression[..^1];
+                DisplayLabel.Text = DisplayLabel.Text.Substring(0, DisplayLabel.Text.Length - 1);
+                expression = expression.Length > 0 ? expression.Substring(0, expression.Length - 1) : "";
             }
             else
             {
-                DisplayEntry.Text = "0";
+                DisplayLabel.Text = "0";
                 expression = "";
             }
+
+            ExpressionLabel.Text = expression;
+        }
+
+        private void DecimalClicked(object sender, EventArgs e)
+        {
+            if (!DisplayLabel.Text.Contains(","))
+            {
+                DisplayLabel.Text += ",";
+                expression += ",";
+            }
+        }
+
+        private async void ShowNotImplementedPopup(object sender, EventArgs e)
+        {
+            await DisplayAlert("☝", "Will be implemented later on..", "OK");
         }
     }
 }

@@ -117,3 +117,5 @@ C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-an
 C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-android\Calculator.AssemblyInfo.cs
 C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-android\Calculator.csproj.CoreCompileInputs.cache
 C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-android\Calculator.sourcelink.json
+C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-android\Calculator.dll
+C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-android\Calculator.pdb

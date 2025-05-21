@@ -40,3 +40,6 @@ C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-ma
 C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Calculator.AssemblyInfo.cs
 C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Calculator.csproj.CoreCompileInputs.cache
 C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Calculator.sourcelink.json
+C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Calculator.dll
+C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\refint\Calculator.dll
+C:\Users\kristian.chasjba\source\repos\Calculator\Calculator\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\Calculator.pdb
